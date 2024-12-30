@@ -6,6 +6,8 @@
 - Added base CSS with Tailwind directives
 - Added PostCSS configuration
 - Added required Tailwind CSS dependencies
+- Added VSCode recommended extensions
+- Added VSCode workspace settings
 
 ## [0.0.1] - 2024-12-30
 

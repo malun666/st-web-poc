@@ -1,0 +1,14 @@
+{
+  "recommendations": [
+    "bradlc.vscode-tailwindcss",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "arcanis.vscode-zipfs",
+    "eamodio.gitlens",
+    "editorconfig.editorconfig",
+    "mikestead.dotenv",
+    "streetsidesoftware.code-spell-checker",
+    "vscode-icons-team.vscode-icons",
+    "zixuanchen.vitest-explorer"
+  ]
+}

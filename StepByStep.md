@@ -37,3 +37,7 @@ echo "@tailwind base;
 @tailwind components;
 @tailwind utilities;" > src/index.css
 ```
+
+## Add the VSCode settings
+
+## Add the VSCode extensions
