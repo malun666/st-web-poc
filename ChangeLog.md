@@ -4,6 +4,8 @@
 
 - Added Tailwind CSS configuration
 - Added base CSS with Tailwind directives
+- Added PostCSS configuration
+- Added required Tailwind CSS dependencies
 
 ## [0.0.1] - 2024-12-30
 
