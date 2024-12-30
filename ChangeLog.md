@@ -2,6 +2,9 @@
 
 ## [0.0.3] - 2024-12-30
 
+- Added Husky for Git hooks
+- Added Commitlint configuration
+- Added pre-commit hook for lint and type checking
 - Updated build scripts to use TypeScript
 - Added combined build script for all components
 

@@ -231,7 +231,6 @@ A simplified list can be found in the [Overview](#overview) section.
 ### Git
 
 - [Husky](https://github.com/typicode/husky#readme)
-- [Commitizen](https://github.com/commitizen/cz-cli#readme)
 - [Commitlint](https://github.com/conventional-changelog/commitlint#readme)
 
 ### Other
