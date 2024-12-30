@@ -147,7 +147,6 @@ If you wish to see the reports, run:
 pnpm run test:e2e:report
 ```
 
-
 ## Devtools
 
 This project includes a set of Devtools. Some are additional package dependencies whereas others come built-in to the packages themselves.
