@@ -14,3 +14,5 @@ async function buildApp() {
 }
 
 buildApp();
+
+export { buildApp };

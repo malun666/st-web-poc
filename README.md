@@ -76,7 +76,19 @@ pnpm run dev
 Build the project
 
 ```shell
+pnpm run build:all
+```
+
+Build the app
+
+```shell
 pnpm run build
+```
+
+Build the server
+
+```shell
+pnpm run build:server
 ```
 
 Start the production server

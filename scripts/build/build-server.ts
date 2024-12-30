@@ -1,5 +1,4 @@
 import { execSync } from "child_process";
-import { resolve } from "path";
 
 function buildServer() {
   try {
@@ -12,3 +11,5 @@ function buildServer() {
 }
 
 buildServer();
+
+export { buildServer };
