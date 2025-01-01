@@ -11,4 +11,8 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./app"),
     },
   },
+  server: {
+    port: 3000,
+    host: true,
+  },
 });
