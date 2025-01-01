@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { BaseLayout } from "../components";
 import PageHome from "../pages/PageHome";
 import PageAbout from "../pages/PageAbout";
+import PageLogin from "../pages/PageLogin";
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: "about",
         element: <PageAbout />,
+      },
+      {
+        path: "login",
+        element: <PageLogin />,
       },
     ],
   },
