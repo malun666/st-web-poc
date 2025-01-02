@@ -259,7 +259,17 @@ export default function PageHome() {
 
       <Grid xs={12} md={6}>
         <Card>
-          <Typography level="h3">Treemap Chart</Typography>
+          <Typography level="h3">Treemap Chart1</Typography>
+          <ResponsiveContainer width="100%" height={300}>
+            <Treemap data={treeMapData} dataKey="size" stroke="#fff" fill="#8884d8" nameKey="name">
+              <Tooltip />
+            </Treemap>
+          </ResponsiveContainer>
+        </Card>
+      </Grid>
+      <Grid xs={12} md={6}>
+        <Card>
+          <Typography level="h3">Treemap Chart2</Typography>
           <ResponsiveContainer width="100%" height={300}>
             <Treemap data={treeMapData} dataKey="size" stroke="#fff" fill="#8884d8" nameKey="name">
               <Tooltip />
