@@ -53,8 +53,11 @@ export const loginUser =
       const response = await loginApi({ username, password });
       dispatch(setUser(response.user));
       dispatch(setToken(response.token));
+      return true;
     } catch (error) {
-      dispatch(setError(error instanceof Error ? error.message : "Login failed"));
+      const errorMessage = error instanceof Error ? error.message : "Login failed";
+      dispatch(setError(errorMessage));
+      return false;
     } finally {
       dispatch(setLoading(false));
     }

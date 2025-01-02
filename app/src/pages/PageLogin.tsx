@@ -15,12 +15,12 @@ export default function PageLogin() {
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
-  const { isLoading, error } = useSelector((state: RootState) => state.auth);
+  const { isLoading, error, user } = useSelector((state: RootState) => state.auth);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await dispatch(loginUser(username, password));
-    if (!error) {
+    if (user) {
       enqueueSnackbar("Login successful! Welcome back.", { variant: "success" });
       navigate("/");
     }
