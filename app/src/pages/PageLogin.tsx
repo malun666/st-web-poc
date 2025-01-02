@@ -1,3 +1,5 @@
+import { useSnackbar } from "notistack";
+
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -12,12 +14,16 @@ export default function PageLogin() {
   const [password, setPassword] = useState("");
   const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
+  const { enqueueSnackbar } = useSnackbar();
   const { isLoading, error } = useSelector((state: RootState) => state.auth);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     await dispatch(loginUser(username, password));
-    navigate("/");
+    if (!error) {
+      enqueueSnackbar("Login successful! Welcome back.", { variant: "success" });
+      navigate("/");
+    }
   };
 
   return (

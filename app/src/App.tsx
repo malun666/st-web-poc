@@ -14,7 +14,14 @@ function App() {
   return (
     <Provider store={store}>
       <CssVarsProvider theme={theme}>
-        <SnackbarProvider>
+        <SnackbarProvider
+          maxSnack={3}
+          autoHideDuration={3000}
+          anchorOrigin={{
+            vertical: "top",
+            horizontal: "center",
+          }}
+        >
           <CssBaseline />
           <Router />
         </SnackbarProvider>

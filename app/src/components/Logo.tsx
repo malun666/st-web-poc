@@ -1,31 +1,26 @@
 import { Link } from "react-router-dom";
 
 import { BrightnessAutoRounded } from "@mui/icons-material";
-import { Box, BoxProps, IconButton, Typography } from "@mui/joy";
+import { Box, IconButton, Typography } from "@mui/joy";
 
-export function Logo(props: LogoProps): JSX.Element {
-  const { sx, ...other } = props;
-
+export function Logo() {
   return (
-    <Box
-      sx={{
-        py: 1,
-        px: 2,
-        display: "flex",
-        alignItems: "center",
-        gap: 1,
-        ...sx,
-      }}
-      {...other}
-    >
-      <IconButton component={Link} to="/" color="primary" variant="soft">
-        <BrightnessAutoRounded />
-      </IconButton>
-      <Typography sx={{ fontSize: "1.25rem" }} level="h4" component="div">
-        {import.meta.env.VITE_APP_NAME}
-      </Typography>
-    </Box>
+    <Link to="/" style={{ textDecoration: "none", color: "inherit" }}>
+      <Box
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          gap: 1,
+          cursor: "pointer",
+        }}
+      >
+        <IconButton component={Link} to="/" color="primary" variant="soft">
+          <BrightnessAutoRounded />
+        </IconButton>
+        <Typography sx={{ fontSize: "1.25rem" }} level="h4" component="div">
+          {import.meta.env.VITE_APP_NAME}
+        </Typography>
+      </Box>
+    </Link>
   );
 }
-
-export type LogoProps = Omit<BoxProps, "children">;

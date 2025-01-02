@@ -21,5 +21,6 @@ export default {
         "changelog",
       ],
     ],
+    "body-max-line-length": [0, "always", 200],
   },
 };
