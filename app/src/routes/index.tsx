@@ -4,6 +4,7 @@ import { BaseLayout } from "../components";
 import PageAbout from "../pages/PageAbout";
 import PageHome from "../pages/PageHome";
 import PageLogin from "../pages/PageLogin";
+import PageProfile from "../pages/PageProfile";
 
 const router = createHashRouter([
   {
@@ -21,6 +22,10 @@ const router = createHashRouter([
       {
         path: "login",
         element: <PageLogin />,
+      },
+      {
+        path: "profile",
+        element: <PageProfile />,
       },
     ],
   },
