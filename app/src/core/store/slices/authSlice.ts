@@ -1,6 +1,5 @@
-import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-import { AppThunk } from "..";
 import { login as loginApi } from "../../../service/authService";
 
 interface User {
@@ -23,49 +22,43 @@ const initialState: AuthState = {
   error: null,
 };
 
+export const loginUser = createAsyncThunk(
+  "auth/login",
+  async (credentials: { username: string; password: string }) => {
+    const response = await loginApi(credentials);
+    return response;
+  }
+);
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
   reducers: {
-    setUser: (state, action: PayloadAction<User | null>) => {
-      state.user = action.payload;
+    logout: (state) => {
+      state.user = null;
+      state.token = null;
       state.error = null;
     },
-    setToken: (state, action: PayloadAction<string | null>) => {
-      state.token = action.payload;
-    },
-    setLoading: (state, action: PayloadAction<boolean>) => {
-      state.isLoading = action.payload;
-    },
-    setError: (state, action: PayloadAction<string | null>) => {
-      state.error = action.payload;
-    },
+  },
+  extraReducers: (builder) => {
+    builder
+      .addCase(loginUser.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(loginUser.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.error = null;
+      })
+      .addCase(loginUser.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.error.message || "Login failed";
+      });
   },
 });
 
-export const { setUser, setToken, setLoading, setError } = authSlice.actions;
-
-export const loginUser =
-  (username: string, password: string): AppThunk =>
-  async (dispatch) => {
-    try {
-      dispatch(setLoading(true));
-      const response = await loginApi({ username, password });
-      dispatch(setUser(response.user));
-      dispatch(setToken(response.token));
-      return true;
-    } catch (error) {
-      const errorMessage = error instanceof Error ? error.message : "Login failed";
-      dispatch(setError(errorMessage));
-      return false;
-    } finally {
-      dispatch(setLoading(false));
-    }
-  };
-
-export const logout = (): AppThunk => async (dispatch) => {
-  dispatch(setUser(null));
-  dispatch(setToken(null));
-};
+export const { logout } = authSlice.actions;
 
 export default authSlice.reducer;

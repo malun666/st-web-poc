@@ -11,6 +11,19 @@ export default defineConfig({
       "@": path.resolve(__dirname, "./app/src"),
     },
   },
+  build: {
+    chunkSizeWarningLimit: 800,
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          "react-vendor": ["react", "react-dom", "react-router-dom"],
+          "mui-vendor": ["@mui/joy", "@mui/icons-material"],
+          "chart-vendor": ["recharts"],
+          "redux-vendor": ["@reduxjs/toolkit", "react-redux"],
+        },
+      },
+    },
+  },
   server: {
     port: 3000,
     host: true,

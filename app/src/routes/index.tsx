@@ -1,10 +1,12 @@
+import { Suspense, lazy } from "react";
 import { RouterProvider, createHashRouter } from "react-router-dom";
 
 import { BaseLayout } from "../components";
-import PageAbout from "../pages/PageAbout";
-import PageHome from "../pages/PageHome";
-import PageLogin from "../pages/PageLogin";
-import PageProfile from "../pages/PageProfile";
+
+const PageHome = lazy(() => import("../pages/PageHome"));
+const PageAbout = lazy(() => import("../pages/PageAbout"));
+const PageLogin = lazy(() => import("../pages/PageLogin"));
+const PageProfile = lazy(() => import("../pages/PageProfile"));
 
 const router = createHashRouter([
   {
@@ -13,19 +15,35 @@ const router = createHashRouter([
     children: [
       {
         index: true,
-        element: <PageHome />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <PageHome />
+          </Suspense>
+        ),
       },
       {
         path: "about",
-        element: <PageAbout />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <PageAbout />
+          </Suspense>
+        ),
       },
       {
         path: "login",
-        element: <PageLogin />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <PageLogin />
+          </Suspense>
+        ),
       },
       {
         path: "profile",
-        element: <PageProfile />,
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <PageProfile />
+          </Suspense>
+        ),
       },
     ],
   },
