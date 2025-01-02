@@ -1,9 +1,11 @@
-import { Box, Button } from "@mui/joy";
 import { Suspense } from "react";
-import { Outlet, Link as RouterLink } from "react-router-dom";
-import { Logo } from "./Logo";
 import { useSelector } from "react-redux";
+import { Outlet, Link as RouterLink } from "react-router-dom";
+
+import { Box, Button } from "@mui/joy";
+
 import type { RootState } from "../core/store";
+import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function BaseLayout(): JSX.Element {

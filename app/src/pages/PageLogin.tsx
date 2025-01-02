@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { Button, FormControl, FormLabel, Input, Stack, Sheet } from "@mui/joy";
+
+import { Button, FormControl, FormLabel, Input, Sheet, Stack } from "@mui/joy";
+
+import type { AppDispatch, RootState } from "../core/store";
 import { loginUser } from "../core/store/slices/authSlice";
-import type { RootState, AppDispatch } from "../core/store";
 
 export default function PageLogin() {
   const [username, setUsername] = useState("");
@@ -33,11 +35,7 @@ export default function PageLogin() {
         <Stack spacing={2}>
           <FormControl>
             <FormLabel>Username</FormLabel>
-            <Input
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              required
-            />
+            <Input value={username} onChange={(e) => setUsername(e.target.value)} required />
           </FormControl>
 
           <FormControl>

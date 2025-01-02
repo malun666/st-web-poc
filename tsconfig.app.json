@@ -7,11 +7,6 @@
       "@/*": ["./app/*"]
     }
   },
-  "include": [
-    "app",
-    "postcss.config.js",
-    "tailwind.config.js",
-    "eslint.config.js"
-  ],
+  "include": ["app", "postcss.config.js", "tailwind.config.js", "eslint.config.js"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

@@ -1,4 +1,5 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { PayloadAction, createSlice } from "@reduxjs/toolkit";
+
 import { AppThunk } from "..";
 import { login as loginApi } from "../../../service/authService";
 
@@ -53,9 +54,7 @@ export const loginUser =
       dispatch(setUser(response.user));
       dispatch(setToken(response.token));
     } catch (error) {
-      dispatch(
-        setError(error instanceof Error ? error.message : "Login failed")
-      );
+      dispatch(setError(error instanceof Error ? error.message : "Login failed"));
     } finally {
       dispatch(setLoading(false));
     }

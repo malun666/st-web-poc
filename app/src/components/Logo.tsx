@@ -1,6 +1,7 @@
+import { Link } from "react-router-dom";
+
 import { BrightnessAutoRounded } from "@mui/icons-material";
 import { Box, BoxProps, IconButton, Typography } from "@mui/joy";
-import { Link } from "react-router-dom";
 
 export function Logo(props: LogoProps): JSX.Element {
   const { sx, ...other } = props;

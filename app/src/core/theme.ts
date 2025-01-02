@@ -1,5 +1,6 @@
-import { extendTheme, ThemeProvider as Provider } from "@mui/joy/styles";
-import { createElement, ReactNode } from "react";
+import { ReactNode, createElement } from "react";
+
+import { ThemeProvider as Provider, extendTheme } from "@mui/joy/styles";
 
 /**
  * Customized Joy UI theme.

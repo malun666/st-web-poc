@@ -1,32 +1,34 @@
-import { Grid, Card, Typography } from "@mui/joy";
 import {
-  LineChart,
+  Area,
+  AreaChart,
+  Bar,
+  BarChart,
+  CartesianGrid,
+  Cell,
+  ComposedChart,
+  Legend,
   Line,
+  LineChart,
+  Pie,
+  PieChart,
+  PolarAngleAxis,
+  PolarGrid,
+  PolarRadiusAxis,
+  Radar,
+  RadarChart,
+  RadialBar,
+  RadialBarChart,
+  ResponsiveContainer,
+  Scatter,
+  ScatterChart,
+  Tooltip,
+  Treemap,
   XAxis,
   YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  ResponsiveContainer,
-  BarChart,
-  Bar,
-  PieChart,
-  Pie,
-  Cell,
-  AreaChart,
-  Area,
-  RadarChart,
-  Radar,
-  PolarGrid,
-  PolarAngleAxis,
-  PolarRadiusAxis,
-  ScatterChart,
-  Scatter,
-  ComposedChart,
-  RadialBarChart,
-  RadialBar,
-  Treemap,
 } from "recharts";
+
+import { Card, Grid, Typography } from "@mui/joy";
+
 import { useTheme } from "../hooks/useTheme";
 
 const lineData = [
@@ -111,12 +113,7 @@ export default function PageHome() {
               <YAxis stroke={textColor} />
               <Tooltip />
               <Legend />
-              <Line
-                type="monotone"
-                dataKey="value"
-                stroke="#8884d8"
-                activeDot={{ r: 8 }}
-              />
+              <Line type="monotone" dataKey="value" stroke="#8884d8" activeDot={{ r: 8 }} />
               <Line type="monotone" dataKey="value2" stroke="#82ca9d" />
             </LineChart>
           </ResponsiveContainer>
@@ -133,20 +130,8 @@ export default function PageHome() {
               <YAxis stroke={textColor} />
               <Tooltip />
               <Legend />
-              <Area
-                type="monotone"
-                dataKey="value"
-                stackId="1"
-                stroke="#8884d8"
-                fill="#8884d8"
-              />
-              <Area
-                type="monotone"
-                dataKey="value2"
-                stackId="1"
-                stroke="#82ca9d"
-                fill="#82ca9d"
-              />
+              <Area type="monotone" dataKey="value" stackId="1" stroke="#8884d8" fill="#8884d8" />
+              <Area type="monotone" dataKey="value2" stackId="1" stroke="#82ca9d" fill="#82ca9d" />
             </AreaChart>
           </ResponsiveContainer>
         </Card>
@@ -179,12 +164,7 @@ export default function PageHome() {
               <YAxis stroke={textColor} />
               <Tooltip />
               <Legend />
-              <Area
-                type="monotone"
-                dataKey="value"
-                fill="#8884d8"
-                stroke="#8884d8"
-              />
+              <Area type="monotone" dataKey="value" fill="#8884d8" stroke="#8884d8" />
               <Bar dataKey="value2" barSize={20} fill="#413ea0" />
               <Line type="monotone" dataKey="value" stroke="#ff7300" />
             </ComposedChart>
@@ -202,18 +182,13 @@ export default function PageHome() {
                 cx="50%"
                 cy="50%"
                 labelLine={false}
-                label={({ name, percent }) =>
-                  `${name} ${(percent * 100).toFixed(0)}%`
-                }
+                label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
                 outerRadius={80}
                 fill="#8884d8"
                 dataKey="value"
               >
                 {pieData.map((_, index) => (
-                  <Cell
-                    key={`cell-${index}`}
-                    fill={COLORS[index % COLORS.length]}
-                  />
+                  <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
                 ))}
               </Pie>
               <Tooltip />
@@ -270,24 +245,13 @@ export default function PageHome() {
         <Card>
           <Typography level="h3">Radial Bar Chart</Typography>
           <ResponsiveContainer width="100%" height={300}>
-            <RadialBarChart
-              cx="50%"
-              cy="50%"
-              innerRadius="10%"
-              outerRadius="80%"
-              data={radialData}
-            >
+            <RadialBarChart cx="50%" cy="50%" innerRadius="10%" outerRadius="80%" data={radialData}>
               <RadialBar
                 label={{ position: "insideStart", fill: textColor }}
                 background
                 dataKey="uv"
               />
-              <Legend
-                iconSize={10}
-                layout="vertical"
-                verticalAlign="middle"
-                align="right"
-              />
+              <Legend iconSize={10} layout="vertical" verticalAlign="middle" align="right" />
             </RadialBarChart>
           </ResponsiveContainer>
         </Card>
@@ -297,13 +261,7 @@ export default function PageHome() {
         <Card>
           <Typography level="h3">Treemap Chart</Typography>
           <ResponsiveContainer width="100%" height={300}>
-            <Treemap
-              data={treeMapData}
-              dataKey="size"
-              stroke="#fff"
-              fill="#8884d8"
-              nameKey="name"
-            >
+            <Treemap data={treeMapData} dataKey="size" stroke="#fff" fill="#8884d8" nameKey="name">
               <Tooltip />
             </Treemap>
           </ResponsiveContainer>

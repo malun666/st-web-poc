@@ -1,12 +1,14 @@
-import { CssVarsProvider } from "@mui/joy/styles";
-import CssBaseline from "@mui/joy/CssBaseline";
-import { Router } from "./routes";
-import { SnackbarProvider } from "notistack";
-import { theme } from "./core/theme";
-import { Provider } from "react-redux";
-import { store } from "./core/store";
-
 import "@fontsource/inter";
+import { SnackbarProvider } from "notistack";
+
+import { Provider } from "react-redux";
+
+import CssBaseline from "@mui/joy/CssBaseline";
+import { CssVarsProvider } from "@mui/joy/styles";
+
+import { store } from "./core/store";
+import { theme } from "./core/theme";
+import { Router } from "./routes";
 
 function App() {
   return (

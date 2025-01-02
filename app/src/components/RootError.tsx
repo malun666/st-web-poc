@@ -1,5 +1,6 @@
-import { Container, Typography } from "@mui/joy";
 import { useRouteError } from "react-router-dom";
+
+import { Container, Typography } from "@mui/joy";
 
 export function RootError(): JSX.Element {
   const err = useRouteError() as RouteError;
@@ -15,8 +16,7 @@ export function RootError(): JSX.Element {
         }}
         level="h1"
       >
-        <strong>Error {err.status || 500}</strong>:{" "}
-        {err.statusText ?? err.message}
+        <strong>Error {err.status || 500}</strong>: {err.statusText ?? err.message}
       </Typography>
     </Container>
   );

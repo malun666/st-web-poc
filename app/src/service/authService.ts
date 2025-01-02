@@ -17,9 +17,6 @@ interface LoginRequest {
 }
 
 export async function login(credentials: LoginRequest): Promise<LoginResponse> {
-  const response = await axios.post<LoginResponse>(
-    `${API_URL}/login`,
-    credentials
-  );
+  const response = await axios.post<LoginResponse>(`${API_URL}/login`, credentials);
   return response.data;
 }
