@@ -1,15 +1,16 @@
 import { Box, Button } from "@mui/joy";
-import { Fragment, Suspense } from "react";
+import { Suspense } from "react";
 import { Outlet, Link as RouterLink } from "react-router-dom";
 import { Logo } from "./Logo";
 import { useSelector } from "react-redux";
 import type { RootState } from "../core/store";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function BaseLayout(): JSX.Element {
   const { user } = useSelector((state: RootState) => state.auth);
 
   return (
-    <Fragment>
+    <div className="h-screen w-screen">
       <Box
         component="header"
         sx={{
@@ -31,7 +32,8 @@ export function BaseLayout(): JSX.Element {
           </Button>
         </Box>
 
-        <Box>
+        <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
+          <ThemeToggle />
           {user ? (
             <Button component={RouterLink} to="/profile" variant="outlined">
               Profile
@@ -49,7 +51,7 @@ export function BaseLayout(): JSX.Element {
           <Outlet />
         </Suspense>
       </Box>
-    </Fragment>
+    </div>
   );
 }
 
