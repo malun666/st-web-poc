@@ -2,11 +2,13 @@ import { Suspense, lazy } from "react";
 import { RouterProvider, createHashRouter } from "react-router-dom";
 
 import { BaseLayout } from "../components";
+import { ProtectedRoute } from "../components/ProtectedRoute";
 
 const PageHome = lazy(() => import("../pages/PageHome"));
 const PageAbout = lazy(() => import("../pages/PageAbout"));
 const PageLogin = lazy(() => import("../pages/PageLogin"));
 const PageProfile = lazy(() => import("../pages/PageProfile"));
+const PageRegister = lazy(() => import("../pages/PageRegister"));
 
 const router = createHashRouter([
   {
@@ -17,7 +19,9 @@ const router = createHashRouter([
         index: true,
         element: (
           <Suspense fallback={<div>Loading...</div>}>
-            <PageHome />
+            <ProtectedRoute>
+              <PageHome />
+            </ProtectedRoute>
           </Suspense>
         ),
       },
@@ -25,7 +29,9 @@ const router = createHashRouter([
         path: "about",
         element: (
           <Suspense fallback={<div>Loading...</div>}>
-            <PageAbout />
+            <ProtectedRoute>
+              <PageAbout />
+            </ProtectedRoute>
           </Suspense>
         ),
       },
@@ -38,10 +44,20 @@ const router = createHashRouter([
         ),
       },
       {
+        path: "register",
+        element: (
+          <Suspense fallback={<div>Loading...</div>}>
+            <PageRegister />
+          </Suspense>
+        ),
+      },
+      {
         path: "profile",
         element: (
           <Suspense fallback={<div>Loading...</div>}>
-            <PageProfile />
+            <ProtectedRoute>
+              <PageProfile />
+            </ProtectedRoute>
           </Suspense>
         ),
       },

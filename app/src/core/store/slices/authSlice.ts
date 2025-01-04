@@ -15,9 +15,10 @@ interface AuthState {
   error: string | null;
 }
 
+// Initialize state with token from sessionStorage
 const initialState: AuthState = {
   user: null,
-  token: null,
+  token: sessionStorage.getItem("token"),
   isLoading: false,
   error: null,
 };
@@ -26,6 +27,8 @@ export const loginUser = createAsyncThunk(
   "auth/login",
   async (credentials: { username: string; password: string }) => {
     const response = await loginApi(credentials);
+    // Store token in sessionStorage
+    sessionStorage.setItem("token", response.token);
     return response;
   }
 );
@@ -38,6 +41,8 @@ const authSlice = createSlice({
       state.user = null;
       state.token = null;
       state.error = null;
+      // Clear token from sessionStorage
+      sessionStorage.removeItem("token");
     },
   },
   extraReducers: (builder) => {

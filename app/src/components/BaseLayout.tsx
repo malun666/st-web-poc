@@ -1,15 +1,21 @@
 import { Suspense } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Outlet, Link as RouterLink } from "react-router-dom";
 
 import { Box, Button } from "@mui/joy";
 
 import type { RootState } from "../core/store";
+import { logout } from "../core/store/slices/authSlice";
 import { Logo } from "./Logo";
 import { ThemeToggle } from "./ThemeToggle";
 
 export function BaseLayout(): JSX.Element {
   const { user } = useSelector((state: RootState) => state.auth);
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    dispatch(logout());
+  };
 
   return (
     <div className="min-h-screen w-screen">
@@ -37,9 +43,14 @@ export function BaseLayout(): JSX.Element {
         <Box sx={{ display: "flex", alignItems: "center", gap: 2 }}>
           <ThemeToggle />
           {user ? (
-            <Button component={RouterLink} to="/profile" variant="outlined">
-              Profile
-            </Button>
+            <>
+              <Button component={RouterLink} to="/profile" variant="outlined">
+                Profile
+              </Button>
+              <Button onClick={handleLogout} variant="solid" color="danger">
+                Logout
+              </Button>
+            </>
           ) : (
             <Button component={RouterLink} to="/login" variant="outlined">
               Login

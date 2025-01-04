@@ -1,6 +1,4 @@
-import axios from "axios";
-
-const API_URL = import.meta.env.VITE_API_URL;
+import axiosInstance from "../core/baseAxios";
 
 interface LoginResponse {
   token: string;
@@ -16,18 +14,24 @@ interface LoginRequest {
   password: string;
 }
 
+interface RegisterRequest {
+  username: string;
+  email: string;
+  password: string;
+}
+
 export async function login(credentials: LoginRequest): Promise<LoginResponse> {
-  const response = await axios.post<LoginResponse>(
-    `${API_URL}/api/auth/login`,
-    {
-      username: credentials.username,
-      password: credentials.password,
-    },
-    {
-      headers: {
-        "Content-Type": "application/json",
-      },
-    }
-  );
+  const response = await axiosInstance.post<LoginResponse>(`/api/auth/login`, {
+    username: credentials.username,
+    password: credentials.password,
+  });
   return response.data;
+}
+
+export async function register(data: RegisterRequest): Promise<void> {
+  await axiosInstance.post(`/api/auth/register`, data);
+}
+
+export async function logout(): Promise<void> {
+  await axiosInstance.post(`/api/auth/logout`);
 }
