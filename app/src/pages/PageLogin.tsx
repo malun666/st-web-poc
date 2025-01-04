@@ -20,7 +20,10 @@ export default function PageLogin() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      await dispatch(loginUser({ username, password })).unwrap();
+      const { token } = await dispatch(loginUser({ username, password })).unwrap();
+      // Add the token to the session storage
+      sessionStorage.setItem("token", token);
+
       enqueueSnackbar("Login successful! Welcome back.", { variant: "success" });
       navigate("/");
     } catch {

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_URL = "https://demoapi.malunsg.workers.dev";
+const API_URL = import.meta.env.VITE_API_URL;
 
 interface LoginResponse {
   token: string;
@@ -18,7 +18,7 @@ interface LoginRequest {
 
 export async function login(credentials: LoginRequest): Promise<LoginResponse> {
   const response = await axios.post<LoginResponse>(
-    `${API_URL}/login`,
+    `${API_URL}/api/auth/login`,
     {
       username: credentials.username,
       password: credentials.password,
